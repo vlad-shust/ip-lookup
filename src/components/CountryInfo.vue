@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, watch, onMounted, onUnmounted, computed } from 'vue';
+  import { ref, onMounted, onUnmounted, computed } from 'vue';
   import { TimeFormat, INTERVAL_TIME } from '@/utils/constants';
 
   const props = defineProps({
@@ -26,10 +26,6 @@
       localTime.value = moment().format(TimeFormat);
     }
   };
-
-  watch(() => props.timezone, () => {
-    updateLocalTime();
-  });
 
   const flagSrc = computed(() => {
     return `https://flagcdn.com/16x12/${props.countryCode.toLowerCase()}.png`;

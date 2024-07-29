@@ -19,8 +19,8 @@ const submitIp = async (ipEntity: IpEntry) => {
   ipEntity.isLoading = true;
 
   try {
-    const response = await getIpData(ipEntity.ip);
-    Object.assign(ipEntity, response);
+    const ipData = await getIpData(ipEntity.ip);
+    Object.assign(ipEntity, ipData);
   } catch (error: any) {
     ipEntity.error = error.message;
     console.error(error);
