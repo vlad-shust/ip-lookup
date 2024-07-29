@@ -41,11 +41,12 @@
     if (isIpInvalid.value) {
       const error = ErrorMessages.INVALID_IP;
       emit('update:error', error);
+
       return error;
-    } else {
-      emit('update:error', '');
-      return '';
     }
+
+    emit('update:error', '');
+    return '';
   });
 
   const inputClasses = computed(() => ({
