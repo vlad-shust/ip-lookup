@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted, computed } from 'vue';
+  import moment from 'moment-timezone';
   import { TimeFormat, INTERVAL_TIME } from '@/utils/constants';
 
   const props = defineProps({
