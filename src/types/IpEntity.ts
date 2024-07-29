@@ -1,0 +1,19 @@
+export interface IpInfo {
+  ip: string;
+  hostname: string;
+  city: string;
+  region: string;
+  country: string;
+  loc: string;
+  org: string;
+  postal: string;
+  timezone: string;
+  readme: string;
+}
+
+export interface IpEntry extends IpInfo {
+  value: string;
+  label: number;
+  isLoading: boolean;
+  error?: string;
+}
