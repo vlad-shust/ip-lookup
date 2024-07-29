@@ -8,10 +8,6 @@
       type: Number,
       required: true,
     },
-    value: {
-      type: String,
-      required: true,
-    },
     isLoading: {
       type: Boolean,
       default: false,
@@ -34,20 +30,11 @@
     },
   });
 
-  const emit = defineEmits(['update:value', 'update:error', 'blur']);
-
-  const localValue = computed({
-    get() {
-      return props.value;
-    },
-
-    set(newValue) {
-      emit('update:value', newValue);
-    },
-  });
+  const ip = defineModel<string>('value', { default : '' });
+  const emit = defineEmits(['update:error', 'blur']);
 
   const isIpInvalid = computed(() => {
-    return !IpValidationRegexp.test(localValue.value) && localValue.value.trim();
+    return !IpValidationRegexp.test(ip.value) && ip.value.trim();
   });
 
   const localError = computed(() => {
@@ -74,7 +61,7 @@
       <div class="flex-grow flex flex-col ml-2">
         <div class="flex items-center">
           <input 
-            v-model="localValue"
+            v-model="ip"
             :class="['flex-grow border rounded px-2 py-1', inputClasses]"
             :disabled="isLoading"
             :placeholder="placeholder"
